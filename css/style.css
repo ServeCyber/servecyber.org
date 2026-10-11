@@ -152,7 +152,6 @@ nav.scrolled {
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   background: var(--blue-pale);
   color: var(--blue-dark);
   font-size: 12px;
@@ -162,18 +161,6 @@ nav.scrolled {
   padding: 8px 16px;
   border-radius: 100px;
   margin-bottom: 28px;
-}
-.hero-eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--blue);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.4); }
 }
 .hero-title {
   font-family: var(--font-display);
