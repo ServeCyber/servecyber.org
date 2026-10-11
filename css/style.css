@@ -884,3 +884,110 @@ footer {
   .opp-grid { grid-template-columns: 1fr; }
   .stats-col { grid-template-columns: 1fr 1fr; }
 }
+
+/* ───────────────────────────────────────────────
+   OPPORTUNITY BADGES
+   Conference-badge cards: navy slab with a lanyard
+   slot, oversized date, white detail panel, and a
+   single cyan Volunteer action.
+   ─────────────────────────────────────────────── */
+.opp-badge{
+  position:relative;
+  display:flex;flex-direction:column;
+  min-height:330px;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(11,26,45,.12);
+  transition:transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s ease;
+}
+.opp-badge:hover,.opp-badge:focus-within{
+  transform:translateY(-7px) rotate(-.7deg);
+  box-shadow:0 22px 44px rgba(0,175,243,.28);
+}
+
+/* the slab */
+.opp-slab{
+  position:relative;
+  padding:36px 20px 22px;
+  text-align:center;
+  color:#fff;
+  background:
+    linear-gradient(180deg, rgba(0,175,243,.16), transparent 58%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.045) 0 10px, transparent 10px 20px),
+    linear-gradient(170deg, #13293f 0%, #0b1a2d 55%, #061120 100%);
+}
+.opp-punch{
+  position:absolute;top:15px;left:50%;transform:translateX(-50%);
+  width:56px;height:10px;border-radius:999px;
+  background:rgba(255,255,255,.26);
+}
+.opp-kind{
+  font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#b9e6ff;
+}
+.opp-date{
+  font-family:var(--font-display);
+  font-size:54px;line-height:.82;letter-spacing:1px;margin-top:10px;
+}
+.opp-sub{
+  font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:rgba(255,255,255,.82);margin-top:8px;text-transform:uppercase;
+}
+
+/* detail panel */
+.opp-body{background:#fff;flex:1;padding:18px 20px 0;display:flex;flex-direction:column;}
+.opp-body h3{font-size:20px;font-weight:800;line-height:1.22;letter-spacing:-.015em;color:var(--text);}
+.opp-by{font-size:13.5px;color:#3f4e63;font-weight:500;margin-top:3px;}
+.opp-facts{margin-top:13px;display:grid;gap:7px;font-size:13.5px;}
+.opp-fact{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:baseline;}
+.opp-fact dt{color:#5f6d7e;font-weight:600;font-size:12.5px;}
+.opp-fact dd{font-weight:600;color:#33445c;}
+
+.opp-flag{
+  display:inline-block;align-self:flex-start;margin-top:13px;
+  font-size:12px;font-weight:800;padding:4px 11px;border-radius:999px;
+}
+.opp-flag.urgent{background:#fff0e6;color:#d9641f;}
+.opp-flag.open{background:#e9f7f0;color:#2f7d58;}
+.opp-flag.quiet{background:#e9eef3;color:#5f6d7e;}
+
+/* action */
+.opp-act{margin-top:auto;padding:14px 20px 18px;}
+.opp-act a{
+  display:block;text-align:center;text-decoration:none;
+  font-size:15px;font-weight:800;
+  background:var(--blue);color:#06243a;
+  padding:13px;border-radius:9px;
+  transition:background .16s ease, transform .12s ease;
+}
+.opp-act a:hover{background:#0083bd;color:#fff;}
+.opp-act a:active{transform:translateY(2px);}
+.opp-act a:focus-visible{outline:3px solid #0b1a2d;outline-offset:3px;}
+
+/* ongoing: no date to show, so the slab states the commitment */
+.opp-badge.ongoing .opp-date{font-size:40px;}
+
+/* watch: a past event kept for next year — must never read as open */
+.opp-badge.watch{box-shadow:0 3px 10px rgba(11,26,45,.07);}
+.opp-badge.watch .opp-slab{
+  background:
+    repeating-linear-gradient(135deg, rgba(13,31,60,.035) 0 10px, transparent 10px 20px),
+    linear-gradient(170deg,#eef2f6 0%,#e4eaf1 100%);
+  color:var(--text);
+}
+.opp-badge.watch .opp-punch{background:rgba(13,31,60,.16);}
+.opp-badge.watch .opp-kind{color:#3f5368;}
+.opp-badge.watch .opp-date{font-size:34px;}
+.opp-badge.watch .opp-sub{color:#48596d;}
+.opp-badge.watch .opp-act a{background:#fff;color:var(--text);border:1.5px solid rgba(13,31,60,.12);}
+.opp-badge.watch .opp-act a:hover{background:var(--blue-pale);border-color:var(--blue);color:var(--text);}
+.opp-badge.watch:hover{transform:translateY(-4px) rotate(0deg);box-shadow:0 12px 26px rgba(11,26,45,.12);}
+
+@media (max-width:640px){
+  .opp-date{font-size:46px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .opp-badge{transition:none;}
+  .opp-badge:hover{transform:none;}
+}
