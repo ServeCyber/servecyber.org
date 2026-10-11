@@ -909,7 +909,7 @@ footer {
 /* the slab */
 .opp-slab{
   position:relative;
-  padding:36px 20px 22px;
+  padding:34px 20px 24px;
   text-align:center;
   color:#fff;
   background:
@@ -926,23 +926,27 @@ footer {
   font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
   color:#b9e6ff;
 }
-.opp-date{
+/* the event name, carried large on the slab */
+.opp-name{
   font-family:var(--font-display);
-  font-size:54px;line-height:.82;letter-spacing:1px;margin-top:10px;
+  font-size:42px;line-height:.92;letter-spacing:.5px;
+  margin-top:10px;color:#fff;
 }
+.opp-name.medium{font-size:34px;}
+.opp-name.long{font-size:27px;line-height:1.02;}
 .opp-sub{
-  font-size:11px;font-weight:600;letter-spacing:.16em;
-  color:rgba(255,255,255,.82);margin-top:8px;text-transform:uppercase;
+  font-size:12px;font-weight:600;letter-spacing:.02em;
+  color:rgba(255,255,255,.78);margin-top:7px;
 }
 
 /* detail panel */
-.opp-body{background:#fff;flex:1;padding:18px 20px 0;display:flex;flex-direction:column;}
-.opp-body h3{font-size:20px;font-weight:800;line-height:1.22;letter-spacing:-.015em;color:var(--text);}
-.opp-by{font-size:13.5px;color:#3f4e63;font-weight:500;margin-top:3px;}
-.opp-facts{margin-top:13px;display:grid;gap:7px;font-size:13.5px;}
+.opp-body{background:#fff;flex:1;padding:17px 20px 0;display:flex;flex-direction:column;}
+.opp-facts{display:grid;gap:9px;font-size:13.5px;}
 .opp-fact{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:baseline;}
 .opp-fact dt{color:#5f6d7e;font-weight:600;font-size:12.5px;}
 .opp-fact dd{font-weight:600;color:#33445c;}
+.opp-fact:first-child dd{font-weight:700;color:var(--text);}
+.opp-when-sub{display:block;font-size:12px;font-weight:500;color:#5f6d7e;margin-top:1px;}
 
 .opp-flag{
   display:inline-block;align-self:flex-start;margin-top:13px;
@@ -966,7 +970,7 @@ footer {
 .opp-act a:focus-visible{outline:3px solid #0b1a2d;outline-offset:3px;}
 
 /* ongoing: no date to show, so the slab states the commitment */
-.opp-badge.ongoing .opp-date{font-size:40px;}
+
 
 /* watch: a past event kept for next year — must never read as open */
 .opp-badge.watch{box-shadow:0 3px 10px rgba(11,26,45,.07);}
@@ -978,14 +982,17 @@ footer {
 }
 .opp-badge.watch .opp-punch{background:rgba(13,31,60,.16);}
 .opp-badge.watch .opp-kind{color:#3f5368;}
-.opp-badge.watch .opp-date{font-size:34px;}
+
 .opp-badge.watch .opp-sub{color:#48596d;}
+.opp-badge.watch .opp-name{color:var(--text);}
 .opp-badge.watch .opp-act a{background:#fff;color:var(--text);border:1.5px solid rgba(13,31,60,.12);}
 .opp-badge.watch .opp-act a:hover{background:var(--blue-pale);border-color:var(--blue);color:var(--text);}
 .opp-badge.watch:hover{transform:translateY(-4px) rotate(0deg);box-shadow:0 12px 26px rgba(11,26,45,.12);}
 
 @media (max-width:640px){
-  .opp-date{font-size:46px;}
+  .opp-name{font-size:36px;}
+  .opp-name.medium{font-size:30px;}
+  .opp-name.long{font-size:25px;}
 }
 @media (prefers-reduced-motion:reduce){
   .opp-badge{transition:none;}
