@@ -927,12 +927,14 @@ footer {
 }
 /* the event name, carried large on the slab */
 .opp-name{
+  --name-size:54px;
   font-family:var(--font-display);
-  font-size:54px;line-height:.9;letter-spacing:.5px;
+  font-size:var(--name-size);line-height:.9;letter-spacing:.5px;
   margin-top:12px;color:#fff;
+  overflow-wrap:break-word;
 }
-.opp-name.medium{font-size:44px;}
-.opp-name.long{font-size:34px;line-height:1;}
+.opp-name.medium{--name-size:44px;}
+.opp-name.long{--name-size:34px;line-height:1;}
 .opp-sub{
   font-size:12px;font-weight:600;letter-spacing:.02em;
   color:rgba(255,255,255,.78);margin-top:7px;
@@ -993,9 +995,17 @@ footer {
 .opp-badge.watch:hover{transform:translateY(-4px) rotate(0deg);box-shadow:0 12px 26px rgba(11,26,45,.12);}
 
 @media (max-width:640px){
-  .opp-name{font-size:46px;}
-  .opp-name.medium{font-size:38px;}
-  .opp-name.long{font-size:31px;}
+  .opp-name{--name-size:46px;}
+  .opp-name.medium{--name-size:38px;}
+  .opp-name.long{--name-size:31px;}
+}
+
+/* Fit each title to its card so a long one-word name never runs off the edge.
+   --w (the widest unbreakable word, in em) and --n (its letter count) are set per card.
+   The size only ever shrinks: titles that already fit keep the size above. */
+@supports (width:1cqw){
+  .opp-slab{container-type:inline-size;}
+  .opp-name{font-size:min(var(--name-size), calc((100cqw - var(--n,0) * .5px) / var(--w,1)));}
 }
 @media (prefers-reduced-motion:reduce){
   .opp-badge{transition:none;}
