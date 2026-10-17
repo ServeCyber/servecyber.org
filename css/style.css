@@ -1000,6 +1000,13 @@ footer {
   .opp-name.long{--name-size:31px;}
 }
 
+/* Older browsers (no container-query units): never exceed the largest size that fits the
+   narrowest card. --s is that size, worked out per title. Modern browsers override this below. */
+.opp-name{font-size:min(var(--name-size), var(--s, var(--name-size)));}
+@media (max-width:359px){
+  .opp-name{font-size:min(var(--name-size), calc(var(--s, 999px) * .84));}
+}
+
 /* Fit each title to its card so a long one-word name never runs off the edge.
    --w (the widest unbreakable word, in em) and --n (its letter count) are set per card.
    The size only ever shrinks: titles that already fit keep the size above. */
